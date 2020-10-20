@@ -1,0 +1,292 @@
+<!--
+
+    Sí, está vacío. :-)
+    Crea un documento html con todos los metas que hemos visto en el curso.
+
+    En el body crea un grid que sea con cinco o seis divisiones
+    (libertad total en sus contenidos) con tal de que:
+
+    - el en móviles sea una columna,
+    - en tablets sean dos columnas,
+    - en ordenadores sean cuatro columnas,
+    - una de las columnas no se vea en móviles
+    - otra columna diferente no se vea en tablets
+    - una de las columnas que se vean en todos los dispositivos
+      contenga un vídeo de Youtube incrustado.
+    - otra de las columnas que se vean en todos los dispositivos
+      contenga un formulario que, a su vez, contenga:
+      - Un input múltiple tipo checkbox con varias opciones seleccionables
+      - Un campo texto
+      - Un campo fecha
+      - Un campo para elegir color
+      - Un input múltiple tipo radio con una única opción seleccionable
+      
+      El formulario ha de enviar los datos por el método get
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Primary Meta Tags -->
+<title>Ejercicio 5</title>
+<meta name="title" content="Ejercicio 5">
+<meta name="description" content="Esto tiene como finalidad valorar los conocimientos impartidos en las clases pasadas">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://metatags.io/">
+<meta property="og:title" content="Ejercicio 5">
+<meta property="og:description" content="Esto tiene como finalidad valorar los conocimientos impartidos en las clases pasadas">
+<meta property="og:image" content="http://placekitten.com/1500/800">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://metatags.io/">
+<meta property="twitter:title" content="Ejercicio 5">
+<meta property="twitter:description" content="Esto tiene como finalidad valorar los conocimientos impartidos en las clases pasadas">
+<meta property="twitter:image" content="http://placekitten.com/1500/800">
+
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  #formulario {
+
+    grid-area: formulario;
+  }
+
+  #articulo1 {
+
+    grid-area: articulo1;
+  }
+
+  #articulo2 {
+    display: none;
+    grid-area: articulo2;
+  }
+
+  #video {
+    grid-area: video;
+  }
+
+  main {
+    display: grid;
+    grid-gap: 10px;
+
+    grid-template-areas:
+      "articulo1"
+      "video"
+      "formulario"
+    ;
+  }
+
+  @media (min-width: 500px) {
+
+    #articulo1 {
+      display: none;
+      grid-area: articulo1;
+    }
+
+    #articulo2 {
+      display: initial;
+      grid-area: articulo2;
+    }
+
+    main {
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "articulo2  articulo2 "
+        "formulario   video  "
+      ;
+    }
+  }
+  @media (min-width: 700px) {
+
+#articulo1 {
+  display: initial;
+   grid-area: articulo1;
+}
+
+#articulo2 {
+  display: initial;
+  grid-area: articulo2;
+}
+
+main {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "articulo1  articulo2  formulario video"
+    
+  ;
+}
+}
+</style>
+
+<body>
+
+  <main>
+    <div id="formulario">
+      <form action="#" method="GET">
+        <h1>Formulario</h1>
+        <div>
+          <label for="">Nombre:</label>
+          <input type="text">
+        </div>
+        <div>
+          <label for="">Correo:</label>
+          <input type="text" placeholder="ejemplo@correo.com">
+        </div>
+        <div>
+          <h1>Fecha de nacimiento</h1>
+          <label for="fecha">Fecha:</label>
+          <input type="date" name="fecha" id="fecha">
+
+        </div>
+
+
+        <div>
+          <h2>¿A qué régimen familiar pertences? </h2>
+          <label for="Normal"> Normal</label>
+          <input type="radio" name="familia" id="Normal" value="azul" tabindex="1">
+
+          <label for="Numerosa"> Numerosa </label>
+          <input type="radio" name="familia" id="Numerosa" value="rojo" tabindex="2">
+
+          <label for="Numerosa_especial"> Numerosa especial</label>
+          <input type="radio" name="familia" id="Numerosa_especial" value="amarillo" tabindex="3">
+        </div>
+        <div>
+          <h2>¿Cuál es tu color favorito?</h2>
+          <label for="colores">Selecciona el color:</label>
+          <select name="colores" id="colores">
+            <option value="Azul">Azul</option>
+            <option value="Verde">Verde</option>
+            <option value="Rojo">Rojo</option>
+          </select>
+        </div>
+
+        <div>
+          <h2>¿Qué mascotas tendrías en tu casa?</h2>
+          <label for="mascota">Perro:</label>
+          <input type="checkbox" name="mascota" id="perro" />
+          <label for="mascota">Gato:</label>
+          <input type="checkbox" name="mascota" id="gato" />
+          <label for="mascota">Tortuga:</label>
+          <input type="checkbox" name="mascota" id="tortuga" />
+          <label for="mascota">Pajaro:</label>
+          <input type="checkbox" name="mascota" id="Pajaro" />
+          <label for="mascota">Pez:</label>
+          <input type="checkbox" name="mascota" id="Pez" />
+          <label for="mascota">Otros:</label>
+          <input type="checkbox" name="mascota" id="Otros" />
+
+        </div>
+      </form>
+    </div>
+    <article id="articulo1">
+      <h1>Artículo 1</h1>
+
+      <img src="http://placekitten.com/700/400" alt="artículo 1">
+
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, dicta? Dicta aperiam cupiditate culpa nam
+        consequatur necessitatibus. Perspiciatis maxime iusto est consequatur nihil numquam, harum, asperiores vero
+        consequuntur voluptas velit ex. Obcaecati saepe ut beatae praesentium facere reprehenderit voluptatibus rem
+        similique, facilis illum earum minima quas animi mollitia cupiditate laboriosam iusto quo vero? Iste expedita
+        provident commodi a quae, inventore asperiores ut distinctio minima atque nihil eos praesentium obcaecati nobis
+        in quidem, dolor magni laudantium vitae natus, consequuntur cupiditate impedit libero? Asperiores, architecto
+        culpa debitis impedit eveniet officia nemo expedita corporis autem quam. Eaque praesentium odit delectus,
+        eveniet tempora iure libero quae dicta a blanditiis error velit. Impedit sit exercitationem, reiciendis error
+        iusto, possimus tenetur modi cumque amet quidem quod et in dolore ea distinctio ex incidunt perferendis adipisci
+        repellat autem doloribus dignissimos? Corporis, alias vero! Provident aspernatur ullam inventore velit quis non
+        ipsam unde sequi iure quas ea culpa eius molestias iste, amet vero explicabo dicta perferendis deleniti quia
+        accusamus facilis magni? Molestiae ad culpa pariatur! Voluptatum non fugiat sunt aut distinctio id aliquam
+        itaque rem dicta. Inventore tempora reiciendis ullam praesentium voluptatem quia ducimus quibusdam aliquid
+        similique optio quaerat incidunt nam, doloremque porro minus odit est, culpa neque rem! Quaerat dolorem sunt
+        perspiciatis ad! Iure, cum ullam id quibusdam ipsa nostrum eveniet voluptate quis saepe vero excepturi tempora
+        recusandae accusantium iste nemo eos voluptatibus libero! Assumenda exercitationem nulla earum fugit error
+        cumque odit dolores adipisci esse impedit voluptatem a, numquam laborum facilis ipsum possimus, consequuntur
+        ratione quam veritatis magnam distinctio cum accusantium! Molestias dolorum minus corrupti aliquam inventore
+        illo cum voluptates rerum at ipsa officiis cupiditate iste in, soluta sint corporis excepturi porro aut
+        asperiores temporibus explicabo! Ut corporis vero, tenetur, hic doloremque aliquid odio quo facilis deleniti
+        aut, odit excepturi voluptatum molestias. Numquam tempora eius nihil reprehenderit ducimus soluta, delectus quos
+        aliquam mollitia temporibus, tempore voluptates beatae perspiciatis iste qui minus illum repellat architecto
+        magni aperiam perferendis laboriosam in. Dolores harum hic debitis. Aut quos sunt ipsa dicta expedita beatae,
+        inventore illum at sit assumenda repellat ad iusto, eum fuga, temporibus recusandae voluptate. Exercitationem
+        laborum qui sint recusandae? A inventore, quae error sint impedit suscipit autem labore odio enim nostrum sed,
+        aliquid earum ad adipisci cumque voluptatem officia. Exercitationem iure dolore perferendis nesciunt quo
+        laudantium ipsam voluptatem labore quia placeat illo, facilis quos mollitia, non illum cum amet at debitis
+        ducimus neque eos maiores earum. Corporis cupiditate dignissimos asperiores hic delectus, amet numquam eaque
+        expedita vel, eligendi illum! Doloremque dolor laboriosam tempora cumque quos dolores voluptatum inventore
+        aliquid ducimus? Consectetur sit debitis velit ad aut, id porro! Unde ab, autem delectus eum dolorem earum in
+        reprehenderit libero ea, laudantium voluptatum ducimus eaque qui facilis quas possimus soluta enim ut ad dolore
+        nihil eveniet expedita sunt nisi? Accusamus veniam soluta, a unde nihil animi distinctio cupiditate quos fugit
+        saepe accusantium id quaerat doloribus eum iure. Incidunt dignissimos sunt, vel, excepturi sint, reiciendis
+        iusto ad optio veniam iure similique dolores rem magni. Eos dignissimos natus quos animi distinctio corporis?
+      </p>
+
+    </article>
+
+    <article id="articulo2">
+      <h1>Artículo 2</h1>
+
+      <img src="http://placekitten.com/700/300" alt="artículo 2">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, dicta? Dicta aperiam cupiditate culpa nam
+        consequatur necessitatibus. Perspiciatis maxime iusto est consequatur nihil numquam, harum, asperiores vero
+        consequuntur voluptas velit ex. Obcaecati saepe ut beatae praesentium facere reprehenderit voluptatibus rem
+        similique, facilis illum earum minima quas animi mollitia cupiditate laboriosam iusto quo vero? Iste expedita
+        provident commodi a quae, inventore asperiores ut distinctio minima atque nihil eos praesentium obcaecati nobis
+        in quidem, dolor magni laudantium vitae natus, consequuntur cupiditate impedit libero? Asperiores, architecto
+        culpa debitis impedit eveniet officia nemo expedita corporis autem quam. Eaque praesentium odit delectus,
+        eveniet tempora iure libero quae dicta a blanditiis error velit. Impedit sit exercitationem, reiciendis error
+        iusto, possimus tenetur modi cumque amet quidem quod et in dolore ea distinctio ex incidunt perferendis adipisci
+        repellat autem doloribus dignissimos? Corporis, alias vero! Provident aspernatur ullam inventore velit quis non
+        ipsam unde sequi iure quas ea culpa eius molestias iste, amet vero explicabo dicta perferendis deleniti quia
+        accusamus facilis magni? Molestiae ad culpa pariatur! Voluptatum non fugiat sunt aut distinctio id aliquam
+        itaque rem dicta. Inventore tempora reiciendis ullam praesentium voluptatem quia ducimus quibusdam aliquid
+        similique optio quaerat incidunt nam, doloremque porro minus odit est, culpa neque rem! Quaerat dolorem sunt
+        perspiciatis ad! Iure, cum ullam id quibusdam ipsa nostrum eveniet voluptate quis saepe vero excepturi tempora
+        recusandae accusantium iste nemo eos voluptatibus libero! Assumenda exercitationem nulla earum fugit error
+        cumque odit dolores adipisci esse impedit voluptatem a, numquam laborum facilis ipsum possimus, consequuntur
+        ratione quam veritatis magnam distinctio cum accusantium! Molestias dolorum minus corrupti aliquam inventore
+        illo cum voluptates rerum at ipsa officiis cupiditate iste in, soluta sint corporis excepturi porro aut
+        asperiores temporibus explicabo! Ut corporis vero, tenetur, hic doloremque aliquid odio quo facilis deleniti
+        aut, odit excepturi voluptatum molestias. Numquam tempora eius nihil reprehenderit ducimus soluta, delectus quos
+        aliquam mollitia temporibus, tempore voluptates beatae perspiciatis iste qui minus illum repellat architecto
+        magni aperiam perferendis laboriosam in. Dolores harum hic debitis. Aut quos sunt ipsa dicta expedita beatae,
+        inventore illum at sit assumenda repellat ad iusto, eum fuga, temporibus recusandae voluptate. Exercitationem
+        laborum qui sint recusandae? A inventore, quae error sint impedit suscipit autem labore odio enim nostrum sed,
+        aliquid earum ad adipisci cumque voluptatem officia. Exercitationem iure dolore perferendis nesciunt quo
+        laudantium ipsam voluptatem labore quia placeat illo, facilis quos mollitia, non illum cum amet at debitis
+        ducimus neque eos maiores earum. Corporis cupiditate dignissimos asperiores hic delectus, amet numquam eaque
+        expedita vel, eligendi illum! Doloremque dolor laboriosam tempora cumque quos dolores voluptatum inventore
+        aliquid ducimus? Consectetur sit debitis velit ad aut, id porro! Unde ab, autem delectus eum dolorem earum in
+        reprehenderit libero ea, laudantium voluptatum ducimus eaque qui facilis quas possimus soluta enim ut ad dolore
+        nihil eveniet expedita sunt nisi? Accusamus veniam soluta, a unde nihil animi distinctio cupiditate quos fugit
+        saepe accusantium id quaerat doloribus eum iure. Incidunt dignissimos sunt, vel, excepturi sint, reiciendis
+        iusto ad optio veniam iure similique dolores rem magni. Eos dignissimos natus quos animi distinctio corporis?
+      </p>
+
+    </article>
+    <div id="video">
+      <h1>Lo más visto</h1>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/JtIX3HJKwfo" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+
+
+  </main>
+
+</body>
+
+</html>
