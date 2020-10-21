@@ -11,9 +11,23 @@
       display: grid;
     }
 
-    div >p:first-child{
-           order: 2;
-        }
+    /* ------------------------------forma1  ---*/
+    /* div>p:nth-last-child(2) {
+      order: 2;
+    } */
+    /* ------------------------------forma2  */
+    /* div>p:nth-child(1) {
+      order: 2;
+    } */
+    /* ------------------------------forma3  */
+    /* div>p:first-child{
+      order: 2;
+    } */
+    /* -----------------------------forma4  */
+    div>p:nth-child(odd) {
+      order: 2;
+    }
+
 
     /*
 
